@@ -1,0 +1,6 @@
+venv
+mvenv
+pycache
+/pycache
+.env
+env
