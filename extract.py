@@ -30,17 +30,31 @@ def baixar_arquivo_ano(ano: int) -> Path:
 
 
 def extrair_zip(zip_path: Path):
-    """Extrai o ZIP e apaga o arquivo compactado."""
+    """Extrai apenas os arquivos dos códigos desejados e remove o ZIP."""
     ano = zip_path.stem
     pasta_destino = DESTINO_BASE / ano
     pasta_destino.mkdir(exist_ok=True)
 
-    print(f"[→] Extraindo {zip_path} para {pasta_destino} ...")
+    print(f"[→] Extraindo filtrado {zip_path} ...")
+
+    CODIGOS_ALVO = {
+        "A309", "A329", "A341", "A351", "A322", "A349",
+        "A366", "A357", "A307", "A370", "A350", "A328"
+    }
 
     with zipfile.ZipFile(zip_path, "r") as zip_ref:
-        zip_ref.extractall(pasta_destino)
+        for nome in zip_ref.namelist():
+            # Exemplo: INMET_NE_PE_A309_ARCO VERDE_01-01-2020_A_31-12-2020.csv
+            # Pegamos o trecho do código
+            partes = nome.split("_")
+            if len(partes) < 4:
+                continue
 
-    print(f"[✔] Extração concluída!")
+            codigo = partes[3]  # INMET NE PE A309 ...
+
+            if codigo in CODIGOS_ALVO:
+                zip_ref.extract(nome, pasta_destino)
+                print(f"[✔] Extraído: {nome}")
 
     print(f"[✂] Removendo ZIP {zip_path} ...")
     zip_path.unlink()
