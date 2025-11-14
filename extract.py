@@ -44,13 +44,11 @@ def extrair_zip(zip_path: Path):
 
     with zipfile.ZipFile(zip_path, "r") as zip_ref:
         for nome in zip_ref.namelist():
-            # Exemplo: INMET_NE_PE_A309_ARCO VERDE_01-01-2020_A_31-12-2020.csv
-            # Pegamos o trecho do código
             partes = nome.split("_")
             if len(partes) < 4:
                 continue
 
-            codigo = partes[3]  # INMET NE PE A309 ...
+            codigo = partes[3]  
 
             if codigo in CODIGOS_ALVO:
                 zip_ref.extract(nome, pasta_destino)
@@ -68,8 +66,10 @@ def processar_anos(anos):
         except Exception as e:
             print(f"[ERRO] Ano {ano}: {e}")
 
-
-if __name__ == "__main__":
+def main():
     anos = [2020, 2021, 2022, 2023, 2024]
     processar_anos(anos)
     print("\n[✔] Finalizado com sucesso!")
+
+if __name__ == "__main__":
+    main()

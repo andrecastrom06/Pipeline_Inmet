@@ -5,14 +5,11 @@ PASTA_LIMPA = Path("data/inmet_etl_bronze")
 PASTA_LIMPA.mkdir(parents=True, exist_ok=True)
 
 def corrigir_acentos_e_limpar(caminho: Path):
-    # Lê o arquivo como latin-1 (como o INMET fornece)
     with open(caminho, "r", encoding="latin-1", errors="ignore") as f:
         linhas = f.readlines()
 
-    # Remove as 8 primeiras linhas (metadados)
     linhas = linhas[8:]
 
-    # Converte para UTF-8 (automático ao salvar)
     destino = PASTA_LIMPA / caminho.name
 
     with open(destino, "w", encoding="utf-8") as f:

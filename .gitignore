@@ -4,3 +4,4 @@ pycache
 /pycache
 .env
 env
+__pycache__
