@@ -35,12 +35,7 @@ class Gold(BASE):
     cidade = Column(String(255))
     data = Column(Date)
     hora_utc = Column(Time)
-    
     precipitacao_total_mm = Column(Float)
-    pressao_estacao_mb = Column(Float)
-    pressao_max_ant_mb = Column(Float)
-    pressao_min_ant_mb = Column(Float)
-    radiacao_global_kj_m2 = Column(Float)
     temp_ar_c = Column(Float)
     temp_orvalho_c = Column(Float)
     temp_max_ant_c = Column(Float)

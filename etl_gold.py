@@ -6,10 +6,6 @@ from connections import DATABASE_URL
 
 COLUNAS_PARA_NORMALIZAR = [
     "precipitacao_total_mm",
-    "pressao_estacao_mb",
-    "pressao_max_ant_mb",
-    "pressao_min_ant_mb",
-    "radiacao_global_kj_m2",
     "temp_ar_c",
     "temp_orvalho_c",
     "temp_max_ant_c",
@@ -25,7 +21,6 @@ COLUNAS_PARA_NORMALIZAR = [
 ]
 
 def normalize(valor, v_min, v_max):
-    """Aplica a normalização Min-Max a um valor."""
     if valor is None or v_min is None or v_max is None:
         return None
     
@@ -36,8 +31,6 @@ def normalize(valor, v_min, v_max):
 
 def main():
     engine = create_engine(DATABASE_URL, future=True)
-
-    BASE.metadata.create_all(engine)
 
     with Session(engine) as session:
         

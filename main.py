@@ -2,14 +2,6 @@ from connections import engine
 from models import BASE
 import sys
 
-
-try:
-    from etl_bronze import processar_todos as bronze_main
-except ImportError:
-    print("Erro: Não foi possível encontrar o arquivo 'etl_bronze.py'.")
-    print("Verifique se o arquivo com seu código bronze está salvo com este nome.")
-    sys.exit(1)
-
 try:
     from etl_silver import main as silver_main
 except ImportError:
@@ -33,16 +25,7 @@ def main():
     except Exception as e:
         print(f"\n  [ERRO CRÍTICO] Erro ao conectar/criar tabelas no banco: {e}")
         return  
-
-    print("\n---  ETAPA BRONZE (Limpeza CSV) ---")
-    try:
-        bronze_main()
-        print("  [OK] Arquivos CSV limpos e salvos.")
-    except Exception as e:
-        print(f"\n  [ERRO CRÍTICO] Falha na etapa BRONZE: {e}")
-        print("   O pipeline foi interrompido.")
-        return
-
+    
     print("\n---  ETAPA SILVER (CSV para Tabela) ---")
     try:
         silver_main()
