@@ -1,3 +1,4 @@
+import traceback
 from connections import engine
 from models import BASE
 import sys
@@ -36,6 +37,7 @@ def main():
         print("  [OK] Tabelas (Silver_Inmet, Gold_Inmet) verificadas/criadas.")
     except Exception as e:
         print(f"\n  [ERRO CRÍTICO] Erro ao conectar/criar tabelas no banco: {e}")
+        traceback.print_exc()
         return
     
     print("\n---  ETAPA DE EXTRAÇÃO (Extração de arquivos crus via API Inmet) ---")

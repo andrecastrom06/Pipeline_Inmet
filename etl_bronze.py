@@ -4,6 +4,20 @@ PASTA_ORIGINAL = Path("data/inmet_raw/2025")
 PASTA_LIMPA = Path("data/inmet_etl_bronze")
 PASTA_LIMPA.mkdir(parents=True, exist_ok=True)
 
+def limpar_bronze_2025():
+    arquivos = list(PASTA_LIMPA.glob("*2025*"))
+    if not arquivos:
+        print("[INFO] Nenhum arquivo 2025 encontrado para remoção.")
+        return
+
+    for arq in arquivos:
+        try:
+            arq.unlink()
+            print(f"[REMOVIDO] {arq}")
+        except Exception as e:
+            print(f"[ERRO ao remover {arq}]: {e}")
+
+
 def corrigir_acentos_e_limpar(caminho: Path):
     with open(caminho, "r", encoding="latin-1", errors="ignore") as f:
         linhas = f.readlines()
@@ -30,9 +44,13 @@ def processar_todos():
         except Exception as e:
             print(f"[ERRO] {arq}: {e}")
 
+
 def main():
     print(" Iniciando ETL Bronze: Correção de acentuação e limpeza dos arquivos CSV...")
+
+    limpar_bronze_2025()
     processar_todos()
+
     print("\n Finalizado com sucesso!")
 
 if __name__ == "__main__":
