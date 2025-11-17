@@ -3,7 +3,7 @@ import csv
 from datetime import datetime, time
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
-from models import BASE, Silver
+from models import Silver
 from connections import DATABASE_URL
 
 engine = create_engine(DATABASE_URL, future=True)
@@ -73,6 +73,7 @@ def processar_csv(path_csv):
 from sqlalchemy import text
 
 def main():
+    print("Iniciando o processamento dos dados Silver…")
     pasta = "data/inmet_etl_bronze"
 
     arquivos = [

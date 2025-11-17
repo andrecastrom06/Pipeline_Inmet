@@ -1,7 +1,6 @@
-import os
-from sqlalchemy import create_engine, func, text, Column
+from sqlalchemy import create_engine, func, text
 from sqlalchemy.orm import Session
-from models import BASE, Silver, Gold  
+from models import Silver, Gold
 from connections import DATABASE_URL
 
 COLUNAS_PARA_NORMALIZAR = [
@@ -25,11 +24,12 @@ def normalize(valor, v_min, v_max):
         return None
     
     if (v_max - v_min) == 0:
-        return 0.0  
+        return 0.0
     
     return (valor - v_min) / (v_max - v_min)
 
 def main():
+    print("Iniciando o processamento dos dados Silver para Gold (Normalização Min-Max)…")
     engine = create_engine(DATABASE_URL, future=True)
 
     with Session(engine) as session:
@@ -40,7 +40,7 @@ def main():
             session.commit()
         except Exception as e:
             print(f"Não foi possível truncar a tabela (pode não existir ainda): {e}")
-            session.rollback() 
+            session.rollback()
 
         print("Buscando dados da tabela Silver...")
         registros_silver = session.query(Silver).all()

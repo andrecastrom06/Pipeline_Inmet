@@ -1,6 +1,6 @@
 from pathlib import Path
 
-PASTA_ORIGINAL = Path("data/inmet_raw/2025")
+PASTA_ORIGINAL = Path("data/inmet_raw")
 PASTA_LIMPA = Path("data/inmet_etl_bronze")
 PASTA_LIMPA.mkdir(parents=True, exist_ok=True)
 
@@ -30,10 +30,6 @@ def processar_todos():
         except Exception as e:
             print(f"[ERRO] {arq}: {e}")
 
-def main():
-    print(" Iniciando ETL Bronze: Correção de acentuação e limpeza dos arquivos CSV...")
-    processar_todos()
-    print("\n Finalizado com sucesso!")
 
 if __name__ == "__main__":
-    main()
+    processar_todos()

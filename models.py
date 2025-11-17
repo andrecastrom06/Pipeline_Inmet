@@ -6,7 +6,7 @@ BASE = declarative_base()
 class Silver(BASE):
     __tablename__ = "Silver_Inmet"
 
-    id = Column(Integer, primary_key=True, autoincrement=True) 
+    id = Column(Integer, primary_key=True, autoincrement=True)
     cidade = Column(String(20))
     data = Column(Date)
     hora_utc = Column(Time)

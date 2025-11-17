@@ -3,6 +3,18 @@ from models import BASE
 import sys
 
 try:
+    from extract import main as extract_main
+except ImportError:
+    print("Erro: Não foi possível encontrar o arquivo 'extract.py'.")
+    sys.exit(1)
+
+try:
+    from etl_bronze import main as bronze_main
+except ImportError:
+    print("Erro: Não foi possível encontrar o arquivo 'etl_bronze.py'.")
+    sys.exit(1)
+
+try:
     from etl_silver import main as silver_main
 except ImportError:
     print("Erro: Não foi possível encontrar o arquivo 'etl_silver.py'.")
@@ -24,8 +36,24 @@ def main():
         print("  [OK] Tabelas (Silver_Inmet, Gold_Inmet) verificadas/criadas.")
     except Exception as e:
         print(f"\n  [ERRO CRÍTICO] Erro ao conectar/criar tabelas no banco: {e}")
-        return  
+        return
     
+    print("\n---  ETAPA DE EXTRAÇÃO (Extração de arquivos crus via API Inmet) ---")
+    try:
+        extract_main()
+    except Exception as e:
+        print(f"\n  [ERRO CRÍTICO] Falha na etapa EXTRAÇÃO: {e}")
+        print("   O pipeline foi interrompido.")
+        return
+
+    print("\n---  ETAPA BRONZE (Limpeza inicial para csv) ---")
+    try:
+        bronze_main()
+    except Exception as e:
+        print(f"\n  [ERRO CRÍTICO] Falha na etapa BRONZE: {e}")
+        print("   O pipeline foi interrompido.")
+        return
+
     print("\n---  ETAPA SILVER (CSV para Tabela) ---")
     try:
         silver_main()
