@@ -7,10 +7,6 @@ from sklearn.cluster import KMeans
 import mlflow
 import mlflow.sklearn
 
-
-# -------------------------------
-# 1. Carregar dados da tabela Gold
-# -------------------------------
 def carregar_gold():
     session: SASessionType = Session()
 
@@ -20,10 +16,6 @@ def carregar_gold():
     session.close()
     return df
 
-
-# -------------------------------
-# 2. Preparar dados agrupando por cidade
-# -------------------------------
 def preparar_dados(df):
     df_grouped = df.groupby("cidade").agg({
         "temp_ar_c": "mean",
@@ -35,10 +27,7 @@ def preparar_dados(df):
     return df_grouped
 
 
-# -------------------------------
-# 3. Treinar modelo KMeans
-# -------------------------------
-def treinar_modelo(df_grouped, n_clusters=4):
+def treinar_modelo(df_grouped, n_clusters=3):
 
     features = df_grouped[[
         "temp_ar_c",
@@ -56,10 +45,8 @@ def treinar_modelo(df_grouped, n_clusters=4):
         kmeans = KMeans(n_clusters=n_clusters, random_state=42)
         labels = kmeans.fit_predict(X_scaled)
 
-        # Log params
         mlflow.log_param("n_clusters", n_clusters)
 
-        # Log metric
         mlflow.log_metric("inertia", kmeans.inertia_)
 
         # Log models
@@ -70,10 +57,6 @@ def treinar_modelo(df_grouped, n_clusters=4):
 
     return df_grouped
 
-
-# -------------------------------
-# 4. Tabela final com características dos clusters
-# -------------------------------
 def gerar_tabela_clusters(df_clusterizado):
     tabela = df_clusterizado.groupby("cluster").agg({
         "temp_ar_c": "mean",
@@ -88,7 +71,6 @@ def gerar_tabela_clusters(df_clusterizado):
 def salvar_clusters_no_banco(df_clusters):
     session = Session()
 
-    # Limpa a tabela antes de inserir (opcional)
     session.query(Cluster).delete()
 
     for _, row in df_clusters.iterrows():
@@ -102,9 +84,6 @@ def salvar_clusters_no_banco(df_clusters):
     session.close()
     print("Clusters salvos no banco com sucesso!")
 
-# -------------------------------
-# 5. Main
-# -------------------------------
 def main():
     df = carregar_gold()
     df_prep = preparar_dados(df)
