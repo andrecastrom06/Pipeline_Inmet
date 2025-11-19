@@ -6,16 +6,8 @@ from connections import DATABASE_URL
 COLUNAS_PARA_NORMALIZAR = [
     "precipitacao_total_mm",
     "temp_ar_c",
-    "temp_orvalho_c",
-    "temp_max_ant_c",
-    "temp_min_ant_c",
-    "temp_orvalho_max_ant_c",
-    "temp_orvalho_min_ant_c",
-    "umid_max_ant",
-    "umid_min_ant",
     "umidade_relativa",
     "vento_direcao_graus",
-    "vento_rajada_max_ms",
     "vento_velocidade_ms",
 ]
 
