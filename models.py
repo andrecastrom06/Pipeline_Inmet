@@ -40,3 +40,10 @@ class Gold(BASE):
     umidade_relativa = Column(Float)
     vento_direcao_graus = Column(Float)
     vento_velocidade_ms = Column(Float)
+
+class Cluster(BASE):
+    __tablename__ = "Cidades_Cluster"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    cidade = Column(String(255))
+    Cluster = Column(Integer)

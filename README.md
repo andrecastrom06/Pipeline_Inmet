@@ -30,3 +30,13 @@
     ```bash
     docker-compose down
     ```
+
+- Para iniciar o MLFlow
+    ```bash
+    python -m mlflow ui --port 5000
+    ```
+
+- Para acessar URL do MLFlow
+    ```bash
+    http://127.0.0.1:5000
+    ```

@@ -1,12 +1,8 @@
 import os
 import csv
 from datetime import datetime, time
-from sqlalchemy import create_engine
-from sqlalchemy.orm import Session
 from models import Silver
-from connections import DATABASE_URL
-
-engine = create_engine(DATABASE_URL, future=True)
+from connections import Session
 
 def parse_float(valor):
     if valor is None or valor.strip() == "":
@@ -85,7 +81,7 @@ def main():
     print(f"Encontrados {len(arquivos)} CSVs.")
 
     total_linhas = 0
-    with Session(engine) as session:
+    with Session() as session:
         session.execute(text('TRUNCATE TABLE "Silver_Inmet" RESTART IDENTITY;'))
         session.commit()
 

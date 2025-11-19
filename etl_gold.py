@@ -1,7 +1,6 @@
-from sqlalchemy import create_engine, func, text
-from sqlalchemy.orm import Session
+from sqlalchemy import func, text
 from models import Silver, Gold
-from connections import DATABASE_URL
+from connections import Session
 
 COLUNAS_PARA_NORMALIZAR = [
     "precipitacao_total_mm",
@@ -22,9 +21,8 @@ def normalize(valor, v_min, v_max):
 
 def main():
     print("Iniciando o processamento dos dados Silver para Gold (Normalização Min-Max)…")
-    engine = create_engine(DATABASE_URL, future=True)
 
-    with Session(engine) as session:
+    with Session() as session:
         
         print("Limpando tabela Gold...")
         try:

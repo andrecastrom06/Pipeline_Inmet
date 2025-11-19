@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/andre/OneDrive/%C3%81rea%20de%20Trabalho/Andr%C3%A9/Pipeline_Inmet/mlruns/731364292138993074/610f9fb386c44d01a1222574ca10e092/artifacts
+end_time: 1763556536357
+entry_point_name: ''
+experiment_id: '731364292138993074'
+lifecycle_stage: active
+run_id: 610f9fb386c44d01a1222574ca10e092
+run_name: peaceful-moose-505
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763556472350
+status: 3
+tags: []
+user_id: andre

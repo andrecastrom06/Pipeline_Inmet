@@ -28,6 +28,12 @@ except ImportError:
     print("Verifique se o script gold que criei para você está salvo com este nome.")
     sys.exit(1)
 
+try:
+    from ml_train import main as ml_main
+except ImportError:
+    print("Erro: Não foi possível encontrar o arquivo 'ml_train.py'.")
+    print("Verifique se o script ml_train que criei para você está salvo com este nome.")
+    sys.exit(1)
 
 def main():
     print(" Iniciando pipeline ETL completo (Bronze -> Silver -> Gold)...")
@@ -69,6 +75,13 @@ def main():
         gold_main()
     except Exception as e:
         print(f"\n  [ERRO CRÍTICO] Falha na etapa GOLD: {e}")
+        print(f"   O pipeline foi interrompido.")
+        return
+    
+    try:
+        ml_main()
+    except Exception as e:
+        print(f"\n  [ERRO CRÍTICO] Falha na etapa de Machine Learning: {e}")
         print(f"   O pipeline foi interrompido.")
         return
 

@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/andre/OneDrive/%C3%81rea%20de%20Trabalho/Andr%C3%A9/Pipeline_Inmet/mlruns/731364292138993074/models/m-408dce737a7c4ae0824634999a1b9f1b/artifacts
+creation_timestamp: 1763556481386
+experiment_id: '731364292138993074'
+last_updated_timestamp: 1763556533098
+model_id: m-408dce737a7c4ae0824634999a1b9f1b
+model_type: null
+name: modelo_kmeans
+source_run_id: 610f9fb386c44d01a1222574ca10e092
+status: 2
+status_message: null
