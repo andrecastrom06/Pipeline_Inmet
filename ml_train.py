@@ -10,7 +10,7 @@ import mlflow
 import mlflow.sklearn
 from sklearn.metrics import silhouette_score
 import numpy as np
-
+from sqlalchemy import text
 
 def encontrar_k_otimo(X_scaled, max_k=10):
     n_samples = X_scaled.shape[0]
@@ -49,8 +49,6 @@ def encontrar_k_otimo(X_scaled, max_k=10):
 
     return k_final
 
-
-
 def treinar_modelo(df_grouped):
 
     features = df_grouped[[ 
@@ -60,12 +58,10 @@ def treinar_modelo(df_grouped):
         "vento_velocidade_ms"
     ]]
 
-    # Padroniza com nomes
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(features)
     X_scaled_df = pd.DataFrame(X_scaled, columns=features.columns)
 
-    # Configura backend DB e experimento
     mlflow.set_tracking_uri("sqlite:///mlutils/mlflow.db")
     mlflow.set_experiment("Cluster_Estacoes_Meteorologicas")
 
@@ -89,14 +85,13 @@ def treinar_modelo(df_grouped):
         mlflow.log_param("k_clusters_final", k_otimo)
         mlflow.log_metric("inertia_final", kmeans.inertia_)
 
-        # ----------- CORREÇÃO FINAL (SEM WARNINGS) -----------
         pipeline = Pipeline([
             ("scaler", StandardScaler()),
             ("to_array", FunctionTransformer(lambda x: np.asarray(x), validate=False)),
             ("kmeans", KMeans(n_clusters=k_otimo, random_state=42))
         ])
 
-        input_example = df_grouped[[
+        input_example = df_grouped[[ 
             "temp_ar_c",
             "precipitacao_total_mm",
             "umidade_relativa",
@@ -108,11 +103,9 @@ def treinar_modelo(df_grouped):
             name="modelo_clusters",
             input_example=input_example
         )
-        # ------------------------------------------------------
 
     df_grouped["cluster"] = labels
     return df_grouped
-
 
 def carregar_gold():
     session: SASessionType = Session()
@@ -120,7 +113,6 @@ def carregar_gold():
     df = pd.read_sql(query.statement, session.bind)
     session.close()
     return df
-
 
 def preparar_dados(df):
     df_grouped = df.groupby("cidade").agg({
@@ -130,7 +122,6 @@ def preparar_dados(df):
         "vento_velocidade_ms": "mean"
     }).reset_index()
     return df_grouped
-
 
 def gerar_tabela_clusters(df_clusterizado):
     tabela = df_clusterizado.groupby("cluster").agg({
@@ -142,22 +133,21 @@ def gerar_tabela_clusters(df_clusterizado):
     print(tabela)
     return tabela
 
-
 def salvar_clusters_no_banco(df_clusters):
     session = Session()
-    session.query(Cluster).delete()
+
+    session.execute(text('TRUNCATE TABLE "Cidades_Cluster" RESTART IDENTITY CASCADE;'))
 
     for _, row in df_clusters.iterrows():
         registro = Cluster(
             cidade=row["cidade"],
-            Cluster=int(row["cluster"])
+            cluster=int(row["cluster"])
         )
         session.add(registro)
 
     session.commit()
     session.close()
     print("Clusters salvos no banco com sucesso!")
-
 
 def main():
     print("Iniciando o processo de clusterização...")
@@ -179,8 +169,8 @@ def main():
         for cidade in cidades:
             print(f" - {cidade}")
 
+    salvar_clusters_no_banco(df_clusterizado)
     return df_clusterizado
-
 
 if __name__ == "__main__":
     main()

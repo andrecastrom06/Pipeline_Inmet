@@ -46,4 +46,4 @@ class Cluster(BASE):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     cidade = Column(String(255))
-    Cluster = Column(Integer)
+    cluster = Column(Integer)
