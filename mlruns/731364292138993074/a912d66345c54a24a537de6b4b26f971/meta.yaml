@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/andre/OneDrive/%C3%81rea%20de%20Trabalho/Andr%C3%A9/Pipeline_Inmet/mlruns/731364292138993074/a912d66345c54a24a537de6b4b26f971/artifacts
+end_time: 1763577640774
+entry_point_name: ''
+experiment_id: '731364292138993074'
+lifecycle_stage: active
+run_id: a912d66345c54a24a537de6b4b26f971
+run_name: bemused-hog-665
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763577640735
+status: 4
+tags: []
+user_id: andre

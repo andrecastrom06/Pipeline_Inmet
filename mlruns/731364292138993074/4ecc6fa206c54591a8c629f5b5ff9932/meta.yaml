@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/andre/OneDrive/%C3%81rea%20de%20Trabalho/Andr%C3%A9/Pipeline_Inmet/mlruns/731364292138993074/4ecc6fa206c54591a8c629f5b5ff9932/artifacts
+end_time: 1763577537811
+entry_point_name: ''
+experiment_id: '731364292138993074'
+lifecycle_stage: active
+run_id: 4ecc6fa206c54591a8c629f5b5ff9932
+run_name: honorable-elk-505
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763577535538
+status: 4
+tags: []
+user_id: andre

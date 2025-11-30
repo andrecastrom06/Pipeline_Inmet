@@ -8,9 +8,4 @@ __pycache__/
 
 .env
 
-mlruns/*
-mlruns/
-mlutils/
-mlutils/*
-
 .vscode/

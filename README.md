@@ -1,13 +1,15 @@
 # Pipeline_Inmet
+## Análise e Visualização de Dados - 2025.2
+## CESAR School
 
 ## 🫂Equipe🫂
-* André Castro
-* Caio Lima
-* Felipe Caminha
-* José Braz
-* Lucas Sukar
-* Miguel Becker
-* Rodrigo Torres
+* André Castro - andrecastrom06
+* Caio Lima - Clb7cc
+* Felipe Caminha - Fcc2187
+* José Braz - jbraz05
+* Lucas Sukar - LucasSukar
+* Miguel Becker - Becker1406
+* Rodrigo Torres - rtmr01
 
 ## Como Rodar
 - Constrói as imagens
@@ -40,3 +42,5 @@
     ```bash
     http://127.0.0.1:5000
     ```
+
+- Após isso o dashboard estará atualizado e você só deve abrir o arquivo .pbix da pasta trendz/

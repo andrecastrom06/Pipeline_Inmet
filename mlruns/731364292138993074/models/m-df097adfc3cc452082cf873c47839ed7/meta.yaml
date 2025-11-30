@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/andre/OneDrive/%C3%81rea%20de%20Trabalho/Andr%C3%A9/Pipeline_Inmet/mlruns/731364292138993074/models/m-df097adfc3cc452082cf873c47839ed7/artifacts
+creation_timestamp: 1763578345393
+experiment_id: '731364292138993074'
+last_updated_timestamp: 1763578348059
+model_id: m-df097adfc3cc452082cf873c47839ed7
+model_type: null
+name: scaler
+source_run_id: fb435fb49d414442977c0bb64170cef8
+status: 2
+status_message: null

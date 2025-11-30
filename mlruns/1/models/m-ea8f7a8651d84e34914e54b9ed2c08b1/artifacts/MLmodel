@@ -1,0 +1,14 @@
+artifact_path: "file:///C:/Users/andre/OneDrive/\xC1rea de Trabalho/Andr\xE9/Pipeline_Inmet/mlruns/1/models/m-ea8f7a8651d84e34914e54b9ed2c08b1/artifacts"
+flavors:
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+mlflow_version: 3.6.0
+model_id: m-ea8f7a8651d84e34914e54b9ed2c08b1
+model_size_bytes: 710
+model_uuid: m-ea8f7a8651d84e34914e54b9ed2c08b1
+prompts: null
+run_id: bb2617244fb0428a94410ab6bc16202a
+utc_time_created: '2025-11-19 18:56:34.266220'

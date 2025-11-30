@@ -1,0 +1,36 @@
+artifact_path: file:///C:/Users/andre/OneDrive/%C3%81rea%20de%20Trabalho/Andr%C3%A9/Pipeline_Inmet/mlruns/731364292138993074/models/m-0e95475344fb421ab1899847c83f36cd/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.9
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+is_signature_from_type_hint: false
+mlflow_version: 3.6.0
+model_id: m-0e95475344fb421ab1899847c83f36cd
+model_size_bytes: 1233
+model_uuid: m-0e95475344fb421ab1899847c83f36cd
+prompts: null
+run_id: fb435fb49d414442977c0bb64170cef8
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "double", "name": "temp_ar_c", "required": true}, {"type": "double",
+    "name": "precipitacao_total_mm", "required": true}, {"type": "double", "name":
+    "umidade_relativa", "required": true}, {"type": "double", "name": "vento_velocidade_ms",
+    "required": true}]'
+  outputs: '[{"type": "integer", "required": true}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-11-19 18:52:21.056489'

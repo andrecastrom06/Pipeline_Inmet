@@ -1,0 +1,27 @@
+artifact_path: "file:///C:/Users/andre/OneDrive/\xC1rea de Trabalho/Andr\xE9/Pipeline_Inmet/mlruns/1/models/m-6f12b569f30b4bba9b21c9d604ef5c53/artifacts"
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.9
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+mlflow_version: 3.6.0
+model_id: m-6f12b569f30b4bba9b21c9d604ef5c53
+model_size_bytes: 1804
+model_uuid: m-6f12b569f30b4bba9b21c9d604ef5c53
+prompts: null
+run_id: ebc5a947607c4dfba2418a13b2e8825f
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+utc_time_created: '2025-11-19 19:03:04.674465'
