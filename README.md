@@ -20,14 +20,7 @@
     ```bash
     docker-compose up
     ```
-- Rode em um outro terminal
-    ```bash
-    docker-compose up -d
-    ```
-- Acompanhe os logs
-    ```bash
-    docker-compose logs -f app
-    ```
+    
 - Para parar todos os containers
     ```bash
     docker-compose down
