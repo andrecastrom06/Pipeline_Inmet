@@ -1,4 +1,5 @@
-Set-Location "$PSScriptRoot/.."
+Set-Location "D:\Pipeline_Inmet"
+
 
 docker-compose build
 
