@@ -1,6 +1,6 @@
 from sqlalchemy import func, text
-from medalhao.models import Silver, Gold
-from medalhao.connections import Session
+from models import Silver, Gold
+from connections import Session
 
 COLUNAS_PARA_NORMALIZAR = [
     "precipitacao_total_mm",

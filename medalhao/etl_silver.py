@@ -1,8 +1,8 @@
 import os
 import csv
 from datetime import datetime, time
-from medalhao.models import Silver
-from medalhao.connections import Session
+from models import Silver
+from connections import Session
 
 def parse_float(valor):
     if valor is None or valor.strip() == "":
@@ -70,7 +70,7 @@ from sqlalchemy import text
 
 def main():
     print("Iniciando o processamento dos dados Silver…")
-    pasta = "data/inmet_etl_bronze"
+    pasta = "../data/inmet_etl_bronze"
 
     arquivos = [
         os.path.join(pasta, f)

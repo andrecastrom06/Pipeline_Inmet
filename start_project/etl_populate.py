@@ -1,7 +1,7 @@
 from pathlib import Path
 
-PASTA_ORIGINAL = Path("data/inmet_raw")
-PASTA_LIMPA = Path("data/inmet_etl_bronze")
+PASTA_ORIGINAL = Path("../data/inmet_raw")
+PASTA_LIMPA = Path("../data/inmet_etl_bronze")
 PASTA_LIMPA.mkdir(parents=True, exist_ok=True)
 
 def corrigir_acentos_e_limpar(caminho: Path):

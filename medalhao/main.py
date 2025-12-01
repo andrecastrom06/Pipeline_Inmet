@@ -1,35 +1,35 @@
 import traceback
-from medalhao.connections import engine
-from medalhao.models import BASE
+from connections import engine
+from models import BASE
 import sys
 
 try:
-    from medalhao.extract import main as extract_main
+    from extract import main as extract_main
 except ImportError:
     print("Erro: Não foi possível encontrar o arquivo 'extract.py'.")
     sys.exit(1)
 
 try:
-    from medalhao.etl_bronze import main as bronze_main
+    from etl_bronze import main as bronze_main
 except ImportError:
     print("Erro: Não foi possível encontrar o arquivo 'etl_bronze.py'.")
     sys.exit(1)
 
 try:
-    from medalhao.etl_silver import main as silver_main
+    from etl_silver import main as silver_main
 except ImportError:
     print("Erro: Não foi possível encontrar o arquivo 'etl_silver.py'.")
     sys.exit(1)
 
 try:
-    from medalhao.etl_gold import main as gold_main
+    from etl_gold import main as gold_main
 except ImportError:
     print("Erro: Não foi possível encontrar o arquivo 'etl_gold.py'.")
     print("Verifique se o script gold que criei para você está salvo com este nome.")
     sys.exit(1)
 
 try:
-    from medalhao.ml_train import main as ml_main
+    from ml_train import main as ml_main
 except ImportError:
     print("Erro: Não foi possível encontrar o arquivo 'ml_train.py'.")
     print("Verifique se o script ml_train que criei para você está salvo com este nome.")

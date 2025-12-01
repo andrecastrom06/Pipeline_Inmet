@@ -5,8 +5,7 @@ import shutil
 
 BASE_URL = "https://portal.inmet.gov.br/uploads/dadoshistoricos"
 
-DESTINO_BASE = Path("data/inmet_raw")
-
+DESTINO_BASE = Path("../data/inmet_raw")
 
 def baixar_arquivo_ano(ano: int) -> Path:
     """Baixa o ZIP do INMET para um ano específico."""

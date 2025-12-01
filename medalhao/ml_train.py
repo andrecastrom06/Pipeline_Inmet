@@ -1,5 +1,5 @@
-from medalhao.connections import Session       
-from medalhao.models import Gold, Cluster
+from connections import Session       
+from models import Gold, Cluster
 import pandas as pd
 from sqlalchemy.orm import Session as SASessionType
 from sklearn.preprocessing import StandardScaler
@@ -62,7 +62,7 @@ def treinar_modelo(df_grouped):
     X_scaled = scaler.fit_transform(features)
     X_scaled_df = pd.DataFrame(X_scaled, columns=features.columns)
 
-    mlflow.set_tracking_uri("sqlite:///mlutils/mlflow.db")
+    mlflow.set_tracking_uri("sqlite:///../mlutils/mlflow.db")
     mlflow.set_experiment("Cluster_Estacoes_Meteorologicas")
 
     with mlflow.start_run():
