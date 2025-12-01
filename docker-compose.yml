@@ -1,12 +1,15 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       - db
     env_file: .env
     volumes:
       - ./data:/app/data
-    command: python main.py
+      - mlflow_data:/mlflow
+    command: python medalhao/main.py
 
   db:
     image: postgres:15
@@ -22,3 +25,4 @@ services:
 
 volumes:
   pgdata:
+  mlflow_data:

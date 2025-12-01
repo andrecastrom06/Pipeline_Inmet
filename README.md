@@ -28,12 +28,12 @@
     ```bash
     docker-compose logs -f app
     ```
-- Para todos os containers
+- Para parar todos os containers
     ```bash
     docker-compose down
     ```
 
-- Para iniciar o MLFlow
+- Para iniciar o visual do MLFlow
     ```bash
     python -m mlflow ui --port 5000
     ```

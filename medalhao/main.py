@@ -4,6 +4,18 @@ from models import BASE
 import sys
 
 try:
+    from populate import main as populate_inicial_main
+except ImportError:
+    print("Erro: Não foi possível encontrar o arquivo 'populate.py'.")
+    sys.exit(1)
+
+try:
+    from etl_populate import main as etl_populate_inicial_main
+except ImportError:
+    print("Erro: Não foi possível encontrar o arquivo 'etl_populate.py'.")
+    sys.exit(1)
+
+try:
     from extract import main as extract_main
 except ImportError:
     print("Erro: Não foi possível encontrar o arquivo 'extract.py'.")
@@ -36,6 +48,9 @@ except ImportError:
     sys.exit(1)
 
 def main():
+    populate_inicial_main()
+    etl_populate_inicial_main()
+
     print(" Iniciando pipeline ETL completo (Bronze -> Silver -> Gold)...")
     
     try:
@@ -78,6 +93,7 @@ def main():
         print(f"   O pipeline foi interrompido.")
         return
     
+    print("\n---  ETAPA ML (Treinamento de Modelo) ---")
     try:
         ml_main()
     except Exception as e:

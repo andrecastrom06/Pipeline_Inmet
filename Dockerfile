@@ -11,4 +11,4 @@ RUN mkdir -p data/inmet_raw data/inmet_etl_bronze
 
 ENV PYTHONUNBUFFERED=1
 
-CMD ["python", "main.py"]
+CMD ["python", "medalhao/main.py"]

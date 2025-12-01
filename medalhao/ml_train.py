@@ -62,7 +62,7 @@ def treinar_modelo(df_grouped):
     X_scaled = scaler.fit_transform(features)
     X_scaled_df = pd.DataFrame(X_scaled, columns=features.columns)
 
-    mlflow.set_tracking_uri("sqlite:///../mlutils/mlflow.db")
+    mlflow.set_tracking_uri("sqlite:////mlflow/mlflow.db")
     mlflow.set_experiment("Cluster_Estacoes_Meteorologicas")
 
     with mlflow.start_run():

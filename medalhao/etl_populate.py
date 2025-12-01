@@ -18,7 +18,7 @@ def corrigir_acentos_e_limpar(caminho: Path):
     print(f"[OK] Corrigido e salvo: {destino}")
 
 
-def processar_todos():
+def main():
     arquivos = list(PASTA_ORIGINAL.rglob("INMET_NE_PE_*.CSV"))
     if not arquivos:
         print("[AVISO] Nenhum arquivo encontrado.")
@@ -32,4 +32,4 @@ def processar_todos():
 
 
 if __name__ == "__main__":
-    processar_todos()
+    main()
