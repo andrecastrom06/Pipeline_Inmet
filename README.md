@@ -2,6 +2,13 @@
 ## Análise e Visualização de Dados - 2025.2
 ## CESAR School
 
+## Arquitetura da Pipeline de Dados
+### Arquitetura do projeto
+<img width="1519" height="558" alt="Captura de tela 2025-12-15 153601" src="https://github.com/user-attachments/assets/5f0d6a3c-3d41-4ecf-8f1a-a1f7e60b1c54" />
+
+### Arquitetura aprimorada após apresentação do projeto
+<img width="1358" height="457" alt="Captura de tela 2025-12-15 153607" src="https://github.com/user-attachments/assets/65d378f7-0179-442a-9b6e-698238f07b27" />
+
 ## 🫂Equipe🫂
 * André Castro - andrecastrom06
 * Caio Lima - Clb7cc
