@@ -8,6 +8,12 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://raw.githubusercontent.com/andrecastrom06/Pipeline_Inmet/main/trendz/inmet_pe.pbix" download>
+    <img src="https://img.shields.io/badge/⬇️%20Download-Power BI-blue?style=for-the-badge" />
+  </a>
+</p>
+
 ## Arquitetura da Pipeline de Dados
 ### Arquitetura do projeto
 <img width="1519" height="558" alt="Captura de tela 2025-12-15 153601" src="https://github.com/user-attachments/assets/5f0d6a3c-3d41-4ecf-8f1a-a1f7e60b1c54" />
